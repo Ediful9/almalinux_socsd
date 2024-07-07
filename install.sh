@@ -474,7 +474,6 @@ do
       ;;
       --port=*)
         port="${_PARAMETER#--port=}"
-        systemctl stop firewalld &>/dev/null
       ;;
       --whitelist=*)
         whitelist_ipaddrs=$(echo "${_PARAMETER#--whitelist=}" | sed 's/:/\n/g' | sed '/^$/d')
