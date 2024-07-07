@@ -160,7 +160,7 @@ add_user(){
     fi
 
     # 添加用户
-    useradd $User
+    useradd $User -M -s /sbin/nologin
     if [ $? -ne 0 ]; then
         echo "错误：无法创建用户"
         return 1
