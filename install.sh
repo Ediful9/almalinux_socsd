@@ -170,7 +170,7 @@ del_user(){
         return 0
     fi
 
-    userdel $User
+    userdel -r $User
     echo "用户${User}已被成功删除。"
 
 }
