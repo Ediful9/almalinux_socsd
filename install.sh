@@ -13,6 +13,8 @@ check_selinux_status() {
     else
         echo "SELinux 已经处于关闭状态，无需修改。"
     fi
+
+    systemctl disable --now firewalld &>/dev/null
 }
 
 # Step 2: 根据系统固件类型更新 GRUB 配置
