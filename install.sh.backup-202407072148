@@ -153,28 +153,14 @@ add_user(){
     ( [ -z "$User" ] || [ -z "$Password" ] ) && \
         echo " Error: User or password can't be blank" && return 0
 
-    # 检查用户是否已存在
     if id "$User" &>/dev/null; then
-        echo "错误：用户已存在"
-        return 1
+            echo "Error: 用户已存在"
+            return 0
     fi
 
-    # 添加用户
-    useradd $User
-    if [ $? -ne 0 ]; then
-        echo "错误：无法创建用户"
-        return 1
-    fi
-
-    # 设置密码
-    echo "$Password" | passwd --stdin $User
-    if [ $? -eq 0 ]; then
-        echo "用户${User}成功创建并设置密码"
-    else
-        echo "错误：无法设置密码"
-        userdel $User  # 如果设置密码失败，删除创建的用户
-        return 1
-    fi
+    adduser  $User
+    echo "${Password}" | passwd --stdin $User
+    echo "用户${User}成功创建并设置密码"
 }
 
 del_user(){
