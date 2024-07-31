@@ -13,7 +13,7 @@
 使用 `curl`:
 
 ```bash
-curl -sL https://raw.githubusercontent.com/Ediful9/almalinux_socsd/main/install.sh | sh
+curl -sL https://raw.githubusercontent.com/Ediful9/almalinux_socsd/main/install.sh | sh -s -- --port 1080
 ```
 
 使用 wget:
@@ -53,8 +53,12 @@ dante-manage status 或 dante-manage stats
 Socks 服务器配置文件: /etc/sockd.conf
 
 
+永久禁用SELinux
+编辑/etc/selinux/config文件，将SELINUX的值改为disabled：
+```bash
+sudo sed -i 's/^SELINUX=.*/SELINUX=disabled/' /etc/selinux/config
 
-
+```
 
 
 
