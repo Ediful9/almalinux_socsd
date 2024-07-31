@@ -60,6 +60,14 @@ disable_selinux() {
     echo "SELinux has been disabled. A reboot is required to fully apply changes."
 }
 
+# Function to open firewall port
+open_firewall_port() {
+    echo "Opening firewall port $PORT..."
+    sudo firewall-cmd --zone=public --add-port=$PORT/tcp --permanent
+    sudo firewall-cmd --reload
+    echo "Firewall port $PORT has been opened."
+}
+
 # Function to install V2Ray
 install_v2ray() {
     echo "Installing V2Ray..."
@@ -108,6 +116,7 @@ start_v2ray() {
 # Main script
 main() {
     disable_selinux
+    open_firewall_port
     install_v2ray
     configure_v2ray
     start_v2ray
