@@ -127,4 +127,4 @@ main
 # 打印测试命令
 SERVER_IP=$(hostname -I | awk '{print $1}')
 echo -e "\n测试 SOCKS5 代理的命令如下:"
-echo "curl -v -x socks5://${USER}:${PASSWORD}@${SERVER_IP}:${PORT} https://wtfismyip.com/json"
+echo "curl -v -x socks5://${USERNAME}:${PASSWORD}@${SERVER_IP}:${PORT} https://wtfismyip.com/json"
